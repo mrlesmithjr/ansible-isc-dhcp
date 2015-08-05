@@ -20,7 +20,9 @@ use-host-decl-names on;
 # option definitions common to all supported networks...
 option domain-name "{{ dhcp_domain_name }}";
 option domain-name-servers {{ dhcp_name_servers }};
+{% if ntp_servers is defined %}
 option ntp-servers {% for server in ntp_servers %}{{ server }}{% if not loop.last %}, {% endif %}{% endfor %};
+{% endif %}
 
 default-lease-time 600;
 max-lease-time 7200;
