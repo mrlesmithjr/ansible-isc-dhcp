@@ -6,7 +6,10 @@ Installs isc-dhcp server(s) https://www.isc.org/downloads/dhcp/ (Configurable op
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+If setting up dhcp failover...define the following variable in host_vars/host...one node as primary and the other as secondary
+````
+failover_role: primary|secondary
+````
 
 Role Variables
 --------------
