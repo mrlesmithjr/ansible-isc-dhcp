@@ -60,12 +60,12 @@ failover peer "failover" {
 
 {%   if failover_role == "secondary" %}
 failover peer "failover" {
-        {{ failover_role }};
-        address {{ failover_address }};
-        port 520;
-        peer address {{ failover_peer_address }};
-        peer port 519;
-        load balance max seconds 3;
+  {{ failover_role }};
+  address {{ failover_address }};
+  port 520;
+  peer address {{ failover_peer_address }};
+  peer port 519;
+  load balance max seconds 3;
 }
 {%   endif %}
 {% endif %}
