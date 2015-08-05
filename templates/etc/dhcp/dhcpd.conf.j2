@@ -94,7 +94,7 @@ subnet {{ item.dhcp_subnet }} netmask {{ item.dhcp_netmask }} {
 
 {% if dhcp_dns_fwd_zones is defined %}
 {%   for item in dhcp_dns_fwd_zones %}
-zone {{ item.dhcp_dns_fwd_zone }}. {
+zone {{ item }}. {
   primary 127.0.0.1;
 }
 {%   endfor %}
@@ -102,7 +102,7 @@ zone {{ item.dhcp_dns_fwd_zone }}. {
 
 {% if dhcp_dns_rev_zones is defined %}
 {%   for item in dhcp_dns_rev_zones %}
-zone {{ item.dhcp_dns_rev_zone }}.in-addr.arpa. {
+zone {{ item }}.in-addr.arpa. {
   primary 127.0.0.1;
 }
 {%   endfor %}

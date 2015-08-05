@@ -6,9 +6,10 @@ Installs isc-dhcp server(s) https://www.isc.org/downloads/dhcp/ (Configurable op
 Requirements
 ------------
 
-If setting up dhcp failover...define the following variable in host_vars/host...one node as primary and the other as secondary
+If setting up dhcp failover...define the following variables in host_vars/host...one host primary and the other as secondary
 ````
 failover_role: primary|secondary
+failover_peer_address:   #define ip address of opposite dhcp server
 ````
 
 Role Variables
@@ -20,14 +21,10 @@ ddns_update_style: 'none'   #defines ddns update style...options are none, inter
 ddns_updates: false  #defines if ddns updates should be enabled between dhcp and dns...define here or in group_vars/group
 default_lease_time: 86400
 dhcp_dns_fwd_zones: [] #defines dns fwd zones to configure dhcp for...define here or in group_vars/group
-#  - dhcp_dns_fwd_zone: '{{ dhcp_domain_name }}'
-#  - dhcp_dns_primary: '{{ dhcp_dns_primary }}'
-dhcp_dns_primary: '{{ pri_dns }}'  #defines primary dns server...define here or in group_vars/group
+#  - '{{ dhcp_domain_name }}'
 dhcp_dns_rev_zones:  []  #defines dns reverse zones to configure dhcp for...define here or in group_vars/group
-#  - dhcp_dns_rev_zone: 0.0.10
-#    dhcp_dns_primary: '{{ dhcp_dns_primary }}'
-#  - dhcp_dns_rev_zone: 101.0.10
-#    dhcp_dns_primary: '{{ dhcp_dns_primary }}'
+#  - 0.0.10
+#  - 101.0.10
 dhcp_domain_name: '{{ pri_domain_name }}'  #defines domain name to assign to dhcp clients...define here or in group_vars/group
 dhcp_name_servers: '{{ pri_dns }}, {{ sec_dns }}'  #defines dns servers to assign to dhcp clients...define here or in group_vars/group
 dhcp_scopes: [] #defines dhcp scopes to create...define here or in group_vars/group
@@ -52,6 +49,7 @@ dhcp_scopes: [] #defines dhcp scopes to create...define here or in group_vars/gr
 enable_dhcp: true  #defines if dhcp should be enabled or not...define here or in group_vars/group
 enable_dhcp_failover: false  #defines if dhcp load balancing and failover should be configured between dhcp servers...define here or in group_vars/group
 enable_pxe_boot: false  #defines if TFTP/PXE boot options should be enabled...define here or in group_vars/group
+failover_address: '{{ ansible_default_ipv4.address }}'  #defines failover address for dhcp failover setup
 max_lease_time: 86400  #defines max lease time for clients
 #ntp_servers:  #defines internal ntp servers for clients to poll...define here or globally in group_vars/all
 #  - 'ntp1.{{ pri_domain_name }}'
