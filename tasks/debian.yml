@@ -5,14 +5,3 @@
 - name: debian | configuring dhcp service
   template: src=etc/dhcp/dhcpd.conf.j2 dest=/etc/dhcp/dhcpd.conf owner=root group=root mode=0644
   notify: restart_isc_dhcp_server
-  when: ddns_updates is defined and not ddns_updates
-
-- name: debian | configuring dhcp service
-  template: src=etc/dhcp/ddns_dhcpd.conf.j2 dest=/etc/dhcp/dhcpd.conf owner=root group=root mode=0644
-  notify: restart_isc_dhcp_server
-  when: ddns_updates is defined and not enable_dhcp_failover
-
-- name: debian | configuring dhcp service
-  template: src=etc/dhcp/ddns_failover_dhcpd.conf.j2 dest=/etc/dhcp/dhcpd.conf owner=root group=root mode=0644
-  notify: restart_isc_dhcp_server
-  when: (ddns_updates is defined and ddns_updates) and (enable_dhcp_failover is defined and enable_dhcp_failover)
