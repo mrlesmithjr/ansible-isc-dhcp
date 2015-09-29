@@ -4,11 +4,16 @@ authoritative: false  #defines if DHCP server should be authoritative for subnet
 ddns_update_style: 'none'   #defines ddns update style...options are none, interim...define here or in group_vars/group
 ddns_updates: false  #defines if ddns updates should be enabled between dhcp and dns...define here or in group_vars/group
 default_lease_time: 86400
-dhcp_dns_fwd_zones: [] #defines dns fwd zones to configure dhcp for...define here or in group_vars/group
-#  - '{{ dhcp_domain_name }}'
-dhcp_dns_rev_zones:  []  #defines dns reverse zones to configure dhcp for...define here or in group_vars/group
-#  - 0.0.10
-#  - 101.0.10
+dhcp_dns_fwd_zones: [] #isc-dhcp
+#  - dhcp_dns_fwd_zone: '{{ dhcp_domain_name }}'
+#    dhcp_dns_primary: '{{ dhcp_dns_primary }}'
+dhcp_dns_rev_zones: [] #isc-dhcp
+#  - dhcp_dns_rev_zone: 0.0.10
+#    dhcp_dns_primary: '{{ dhcp_dns_primary }}'
+#  - dhcp_dns_rev_zone: 101.0.10
+#    dhcp_dns_primary: '{{ dhcp_dns_primary }}'
+#  - dhcp_dns_rev_zone: 125.0.10
+#    dhcp_dns_primary: '{{ dhcp_dns_primary }}'
 dhcp_domain_name: '{{ pri_domain_name }}'  #defines domain name to assign to dhcp clients...define here or in group_vars/group
 dhcp_name_servers: '{{ pri_dns }}, {{ sec_dns }}'  #defines dns servers to assign to dhcp clients...define here or in group_vars/group
 dhcp_scopes: [] #defines dhcp scopes to create...define here or in group_vars/group
