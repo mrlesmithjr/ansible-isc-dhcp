@@ -2,6 +2,7 @@
 dhcp_dns_fwd_zones:  #isc-dhcp
   - dhcp_dns_fwd_zone: '{{ dhcp_domain_name }}'
     dhcp_dns_primary: '{{ dhcp_dns_primary }}'
+dhcp_dns_primary: 127.0.0.1
 dhcp_dns_rev_zones:  #isc-dhcp
   - dhcp_dns_rev_zone: 0.0.10
     dhcp_dns_primary: '{{ dhcp_dns_primary }}'
