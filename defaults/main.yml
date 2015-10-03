@@ -1,7 +1,7 @@
 ---
 # defaults file for ansible-isc-dhcp
 authoritative: false  #defines if DHCP server should be authoritative for subnet...define here or in group_vars/group
-ddns_update_style: 'none'   #defines ddns update style...options are none, interim...define here or in group_vars/group
+ddns_update_style: none   #defines ddns update style...options are ad-hoc, interim, standard or none...define here or in group_vars/group...read more on this here... https://deepthought.isc.org/article/AA-01091/0/ISC-DHCP-support-for-Standard-DDNS.html
 ddns_updates: false  #defines if ddns updates should be enabled between dhcp and dns...define here or in group_vars/group
 default_lease_time: 86400
 dhcp_dns_fwd_zones: [] #isc-dhcp

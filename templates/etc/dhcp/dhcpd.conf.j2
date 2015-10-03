@@ -11,14 +11,14 @@
 # attempt to do a DNS update when a lease is confirmed. We default to the
 # behavior of the version 2 packages ('none', since DHCP v2 didn't
 # have support for DDNS.)
-{% if ddns_updates %}
+{% if ddns_updates is defined and ddns_updates %}
 ddns-updates on;
-ddns-update-style interim;
+ddns-update-style {{ ddns_update_style|lower }};
 update-static-leases on;
 allow unknown-clients;
 use-host-decl-names on;
 {% endif %}
-{% if not ddns_updates %}
+{% if (ddns_updates is defined and not ddns_updates) of if ddns_updates is not defined %}
 ddns-update-style none;
 {% endif %}
 
