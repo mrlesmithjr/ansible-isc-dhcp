@@ -18,7 +18,7 @@ update-static-leases on;
 allow unknown-clients;
 use-host-decl-names on;
 {% endif %}
-{% if (ddns_updates is defined and not ddns_updates) or if ddns_updates is not defined %}
+{% if (ddns_updates is defined and not ddns_updates) or ddns_updates is not defined %}
 ddns-update-style none;
 {% endif %}
 
