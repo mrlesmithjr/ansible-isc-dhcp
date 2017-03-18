@@ -43,7 +43,7 @@ isc_dhcp_enable_pxe_boot: false
 isc_dhcp_failover_info:
   # ansible_default_ipv4.address|ansible_enp0s8.ipv4.address
   # Defines failover address for dhcp failover setup
-  failover_address: '{{ ansible_enp0s8.ipv4.address }}'
+  failover_address: '{{ ansible_default_ipv4.address }}'
   # Define Ansible inventory group that nodes belong to
   failover_group: 'dhcp-nodes'
   # Define the node in which should be considered the primary
