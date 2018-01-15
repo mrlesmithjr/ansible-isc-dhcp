@@ -7,6 +7,9 @@ isc_dhcp_authoritative: false
 # Defines if dhcp should be configured
 isc_dhcp_config_dhcp: true
 
+# Path to dhcpd's config file (default: /etc/dhcp/dhcpd.conf)
+isc_dhcp_dhcpd_conf: /etc/dhcp/dhcpd.conf
+
 # Defines if ddns updates should be enabled between dhcp and dns
 isc_dhcp_ddns_updates: false
 
@@ -50,6 +53,11 @@ isc_dhcp_failover_info:
   primary: 'node0'
   # Define the node in which should be considered the secondary
   secondary: 'node1'
+
+# On what interfaces should the DHCP server (dhcpd) serve DHCP requests?
+isc_dhcp_listen_interfaces: []
+  # - eth0
+  # - eth1
 
 # Defines max lease time for clients
 isc_dhcp_max_lease_time: 86400
