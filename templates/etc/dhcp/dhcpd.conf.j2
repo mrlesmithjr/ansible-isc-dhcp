@@ -1,3 +1,5 @@
+{{ ansible_managed|comment }}
+
 {% if isc_dhcp_ddns_updates %}
 ddns-updates on;
 ddns-update-style {{ isc_dhcp_ddns_update_style|lower }};
@@ -62,7 +64,7 @@ subnet {{ item.subnet }} netmask {{ item.netmask }} {
 {%     if isc_dhcp_enable_dhcp_failover %}
     failover peer "failover";
 {%     endif %}
-    range {{ item.range }};
+    range {{ item.range_start }} {{ item.range_end }};
 	}
 {%     for option in item.options %}
     option {{ option.name }} {{ option.value }};
