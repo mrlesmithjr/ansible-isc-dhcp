@@ -51,7 +51,7 @@ failover peer "failover" {
   peer address {{ host }};
 {%       endif %}
 {%     endfor %}
-  peer port {{ isc_dhcp_failover_info.secondary_port|default('519') }};
+  peer port {{ isc_dhcp_failover_info.primary_port|default('519') }};
   load balance max seconds 3;
 }
 {%   endif %}
